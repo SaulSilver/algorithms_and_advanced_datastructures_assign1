@@ -3,6 +3,7 @@ package Exercise2;
 import java.util.NoSuchElementException;
 
 /**
+ *
  * Created by Hatem on 21-Sep-16.
  */
 public class StackADT implements A1Stack {

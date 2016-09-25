@@ -3,13 +3,13 @@ package Exercise1;
 /**
  * Implement a Queue ADT for generic element types that supports the following operations:
 
- – enqueue an element in O(1)
+ enqueue an element in O(1)
 
- – dequeue an element in O(1)
+  dequeue an element in O(1)
 
- – peek the front element in O(1)
+ peek the front element in O(1)
 
- – return queue length in O(1)
+  return queue length in O(1)
  * Created by Hatem on 21-Sep-16.
  */
 public class QueueADT implements A1Queue {
