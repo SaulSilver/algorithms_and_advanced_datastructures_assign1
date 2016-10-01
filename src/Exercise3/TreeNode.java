@@ -1,6 +1,6 @@
 package Exercise3;
 
-import java.lang.reflect.Array;
+import org.json.*;
 import java.util.List;
 
 /**
@@ -12,17 +12,17 @@ public class TreeNode implements A1TreeNode {
 
     @Override
     public boolean isJsonObject() {
-        return node.value instanceof Object;
+        return node.value instanceof JSONObject;
     }
 
     @Override
     public boolean isJsonArray() {
-        return node.value instanceof Array;
+        return node.value instanceof JSONArray;
     }
 
     @Override
     public boolean isJsonPrimitive() {
-        return node.value instanceof Number;
+        return node.value instanceof Integer;
     }
 
     private class Node {
