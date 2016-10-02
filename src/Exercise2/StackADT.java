@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  *
  * Created by Hatem on 21-Sep-16.
  */
-public class StackADT implements A1Stack {
+public class StackADT<E> implements A1Stack {
     private int stackSize = 0;
     private Node first = null;
 

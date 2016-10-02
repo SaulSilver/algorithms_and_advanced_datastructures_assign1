@@ -12,7 +12,7 @@ package Exercise1;
   return queue length in O(1)
  * Created by Hatem on 21-Sep-16.
  */
-public class QueueADT implements A1Queue {
+public class QueueADT<E> implements A1Queue {
 
     private int queueSize = 0;
     private Node head = null;
