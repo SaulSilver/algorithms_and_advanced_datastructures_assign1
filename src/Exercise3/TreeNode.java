@@ -11,7 +11,7 @@ import java.util.Stack;
 public class TreeNode<E> implements A1TreeNode {
 
     private Object value;
-    private StackADT<TreeNode> children;
+    private StackADT<TreeNode> children = new StackADT<>();
     private TreeNode parent;
 
     public TreeNode(Object data){
@@ -39,18 +39,23 @@ public class TreeNode<E> implements A1TreeNode {
         this.value = value;
     }
 
+    public StackADT<TreeNode> getChildren() {
+        return children;
+    }
+
     @Override
     public boolean isJsonObject() {
-        return value instanceof JSONObject;
+        return ((String) value).contains("{");
     }
 
     @Override
     public boolean isJsonArray() {
-        return value instanceof JSONArray;
+        return ((String) value).contains("[");
     }
 
     @Override
     public boolean isJsonPrimitive() {
+
         return value instanceof Integer;
     }
 
