@@ -41,6 +41,9 @@ public class StackADT<E> implements A1Stack {
         return stackSize;
     }
 
+    /**
+     * A node class which is the unit of the stack
+     */
     private class Node {
 
         private Object value;

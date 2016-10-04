@@ -1,9 +1,7 @@
 package Exercise4;
 
 import Exercise1.QueueADT;
-import Exercise2.StackADT;
 import Exercise3.TreeNode;
-import Exercise4.A1Tree;
 
 /**
  *
@@ -12,8 +10,9 @@ import Exercise4.A1Tree;
 public class Tree<E> implements A1Tree {
     private TreeNode root;
     private int size = 0;
-    private String whiteSpaceCounter = "";
-    QueueADT<String> elseLine = new QueueADT<>();
+
+    private String whiteSpaceCounter = "";                      //A holder of whitespaces used for indentation
+    private QueueADT<String> oneLine = new QueueADT<>();        //The line holding elements that don't need a new line (e.g. "cars" : { )
 
     public Tree() {
         root = new TreeNode<>(null);
@@ -43,33 +42,37 @@ public class Tree<E> implements A1Tree {
         preorder(root);
     }
 
+    /**
+     * A recursive method for printing the tree with indentation
+     * @param node: the node to be printed
+     */
     private void preorder(TreeNode node) {
         if (node != null) {
             //For the correct indentation
             if (node.isJsonObject() || node.isJsonArray()) {
-                while (elseLine.length() != 0)
-                    System.out.print(elseLine.dequeue());
+                while (oneLine.length() != 0)       //Print what is in the queue first
+                    System.out.print(oneLine.dequeue());
                 System.out.println(whiteSpaceCounter + node.getValue());
                 whiteSpaceCounter += "\t";
             } else if (node.getValue().equals("]") || node.getValue().equals("}")) {
-                if (elseLine.length() != 0) {
-                    while (elseLine.length() != 0)
-                        System.out.print(elseLine.dequeue());
+                if (oneLine.length() != 0) {
+                    while (oneLine.length() != 0)           //Print what is in the queue first
+                        System.out.print(oneLine.dequeue());
                     System.out.println();
                 }
                 whiteSpaceCounter = whiteSpaceCounter.replaceFirst("\t", "");
                 System.out.println(whiteSpaceCounter + node.getValue());
-            } else {
+            } else {        //If the node is primitive
                 if(node.getValue().equals(",")) {
-                    elseLine.enqueue(node.getValue());
-                    while (elseLine.length() != 0)
-                        System.out.print(elseLine.dequeue());
+                    oneLine.enqueue(node.getValue());
+                    while (oneLine.length() != 0)
+                        System.out.print(oneLine.dequeue());
                     System.out.println();
                 }
                 else {
-                    if (elseLine.length() == 0)
-                        elseLine.enqueue(whiteSpaceCounter + node.getValue());
-                    else  elseLine.enqueue(" " + node.getValue());
+                    if (oneLine.length() == 0)
+                        oneLine.enqueue(whiteSpaceCounter + node.getValue());
+                    else  oneLine.enqueue(" " + node.getValue());
                 }
             }
             QueueADT<TreeNode> children = node.getChildren();

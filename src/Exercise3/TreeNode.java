@@ -57,6 +57,7 @@ public class TreeNode<E> implements A1TreeNode {
     @Override
     public boolean isJsonPrimitive() {
         String val = (String) value;
+        //It is a primitive type if it's not opening or clsoing parenthesis or square brackets
         return !(val.contains("[") || val.contains("{") || val.contains("}") || val.contains("]"));
     }
 

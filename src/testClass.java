@@ -9,9 +9,9 @@ import Exercise5.Main;
  */
 public class testClass {
     public static void main(String[] args) {
-        Main a7a = new Main();
-        QueueADT<String> kharaQueue = a7a.constructQueue("/test.json");
-        Tree<String> shagara = a7a.constructTree(kharaQueue);
-        a7a.printTree(shagara);
+        Main main = new Main();
+        QueueADT<String> queue = main.constructQueue("/test.json");
+        Tree<String> tree = main.constructTree(queue);
+        main.printTree(tree);
     }
 }

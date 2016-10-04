@@ -55,6 +55,9 @@ public class QueueADT<E> implements A1Queue {
         return queueSize;
     }
 
+    /**
+     * A node class which is the unit of the queue
+     */
     private class Node {
 
         private Object value;

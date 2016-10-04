@@ -25,8 +25,6 @@ public class Main implements A1Main {
 
             while ((currentLine = fileReader.readLine()) != null)
                 jsonQueue.enqueue(currentLine.trim());
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
@@ -57,10 +55,10 @@ public class Main implements A1Main {
                 else if (node.isJsonObject() || node.isJsonArray()) {
                     jsonTree.addChild(parent, node);
                     parent = node;      //Set the jsonObject as a parent
-                } else if (nodeValue.contains("]") && parentValue.contains("[")) {
+                } else if (nodeValue.contains("]") && parentValue.contains("[")) {   //Check for the correct opening and closing of brackets
                     jsonTree.addChild(parent, node);
                     parent = parent.getParent();
-                } else if (nodeValue.contains("}") && parentValue.contains("{")) {
+                } else if (nodeValue.contains("}") && parentValue.contains("{")) {  //Check for the correct opening and closing of brackets
                     jsonTree.addChild(parent, node);
                     parent = parent.getParent();
                 } else try {
