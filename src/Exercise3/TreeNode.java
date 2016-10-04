@@ -1,5 +1,6 @@
 package Exercise3;
 
+import Exercise1.QueueADT;
 import Exercise2.StackADT;
 import org.json.*;
 import java.util.Stack;
@@ -11,7 +12,7 @@ import java.util.Stack;
 public class TreeNode<E> implements A1TreeNode {
 
     private Object value;
-    private StackADT<TreeNode> children = new StackADT<>();
+    private QueueADT<TreeNode> children = new QueueADT<>();
     private TreeNode parent;
 
     public TreeNode(Object data){
@@ -19,7 +20,7 @@ public class TreeNode<E> implements A1TreeNode {
     }
 
     public void addChild(TreeNode newNode) {
-        children.push(newNode);
+        children.enqueue(newNode);
         newNode.setParent(this);
     }
 
@@ -39,7 +40,7 @@ public class TreeNode<E> implements A1TreeNode {
         this.value = value;
     }
 
-    public StackADT<TreeNode> getChildren() {
+    public QueueADT<TreeNode> getChildren() {
         return children;
     }
 
@@ -55,8 +56,8 @@ public class TreeNode<E> implements A1TreeNode {
 
     @Override
     public boolean isJsonPrimitive() {
-
-        return value instanceof Integer;
+        String val = (String) value;
+        return !(val.contains("[") || val.contains("{") || val.contains("}") || val.contains("]"));
     }
 
 }
